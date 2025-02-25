@@ -1,0 +1,11 @@
+version: 2
+seeds:
+  - name: lkp_division
+    config:
+        schema: "{{env_var('DBT_LOOKUPSCHEMA', 'LOOKUP_DEV')}}"
+  - name: lkp_categories
+    config:
+        schema: "{{env_var('DBT_LOOKUPSCHEMA', 'LOOKUP_DEV')}}"
+  - name: lkp_shippers
+    config:
+        schema: "{{env_var('DBT_LOOKUPSCHEMA', 'LOOKUP_DEV')}}"

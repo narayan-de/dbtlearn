@@ -1,0 +1,37 @@
+version: 2
+
+models:
+  - name: stg_customer
+    description: "Customer master data for DW"
+    columns:
+      - name: customerid
+        description: "unique id"
+        tests:
+          - unique
+          - not_null
+  - name: stg_products
+    description: "Products master data"
+    columns:
+      - name: ProductID
+        description: "Unique ID for products"
+        tests:
+          - unique
+          - not_null
+  - name: stg_shipments
+    columns:
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['shipped','returned','ordered', 'replaced']
+  - name: stg_orderdetails
+    columns:
+      - name: orderid
+        tests:
+          - relationships:
+              to: ref('stg_orders')
+              field: orderid
+  - name: stg_office
+    columns:
+      - name: officeid
+        tests:
+          - is_even
